@@ -1,0 +1,12 @@
+{
+  "name": "expense-tracker",
+  "version": "1.0.0",
+  "description": "A simple expense tracker application to manage finances. Users can add, delete, and view their expenses. The application also provides a summary of the expenses.",
+  "main": "expenseTracker.js",
+  "type":"module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
