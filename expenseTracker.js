@@ -8,11 +8,23 @@ let currentTime = new Date();
 
 const args = process.argv.slice(2);
 let expenseList = [];
+const fileExists = fs.existsSync('expenseList.json');
 //console.log(args);
 
-fs.writeFileSync('expenseList.json',JSON.stringify(expenseList),'utf8');
+if(!fileExists){
+    fs.writeFileSync('expenseList.json',JSON.stringify(expenseList),'utf8');
+}
+
 if(args[0]==="add"){
     addExpense(args);
+}
+
+function loadData(){
+    
+    const fileContent = fs.readFileSync('expenseList.json','utf8');
+    let existingTasks = JSON.parse(fileContent);
+    expenseList.push(...existingTasks);
+    fs.writeFileSync('expenseList.json',JSON.stringify(expenseList,null,2),'utf8');
 }
 
 function addExpense(data){
@@ -22,10 +34,12 @@ function addExpense(data){
     let randomId = Math.floor(Math.random()*100);
 
     expenseObject = {
-        desc: data,
+        desc: data[1],
         id: randomId,
         createdAt: currentTime.toLocaleString(),
         updatedAt: ""
     }
     console.log(expenseObject);
+    expenseList.push(expenseObject);
+    loadData();
 }
