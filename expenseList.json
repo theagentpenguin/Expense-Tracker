@@ -1,16 +1,23 @@
 [
   {
-    "desc": "updated description",
-    "amount": "300",
-    "id": 26,
-    "createdAt": "18/6/2025, 7:54:15 pm",
+    "desc": "simple update",
+    "amount": "25",
+    "id": 93,
+    "createdAt": "18/6/2025, 8:47:34 pm",
+    "updatedAt": "18/6/2025, 8:54:42 pm"
+  },
+  {
+    "desc": "expense 2",
+    "amount": "450",
+    "id": 94,
+    "createdAt": "18/6/2025, 8:47:30 pm",
     "updatedAt": ""
   },
   {
-    "desc": "new expense",
-    "amount": "500",
-    "id": 60,
-    "createdAt": "18/6/2025, 7:25:17 pm",
+    "desc": "expense 1",
+    "amount": "300",
+    "id": 80,
+    "createdAt": "18/6/2025, 8:47:23 pm",
     "updatedAt": ""
   }
 ]

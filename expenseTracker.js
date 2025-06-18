@@ -1,7 +1,6 @@
 import chalk from 'chalk';
 import fs from 'fs';
 
-//console.log(chalk.yellow("Test"));
 console.log(chalk.blue("Hello! This is your digital expense tracker!"));
 console.log("Follow the instructions to get the best out of our tool.");
 console.log("To "+chalk.green("add")+" an expense, type "+chalk.green("add <expense description> <expense amount>"));
@@ -29,7 +28,16 @@ if(args[0]==="add"){
 if(args[0]==="update"){
     updateExpense(args);
 }
+if(args[0]==="view"){
+    viewExpenses();
+}
+if(args[0]==="delete"){
+    deleteExpense(args[1]);
+}
 
+if(args[0]==="summary"){
+    expenseSummary();
+}
 /************************************************************************
 Name of the function: loadData()
 Inputs: no arguments
@@ -77,13 +85,12 @@ function updateExpense(data){
     
     const fileContent = fs.readFileSync('expenseList.json','utf8');
     let existingExpenses = JSON.parse(fileContent);
-    //console.log(data[1]);
-    //console.log(existingExpenses);
     for(let i=0; i<existingExpenses.length; i++){
         
         if(existingExpenses[i].id===inpId){
             existingExpenses[i].desc = newDesc;
             existingExpenses[i].amount = newAmount;
+            existingExpenses[i].updatedAt = currentTime.toLocaleString();
         }
         
     }
@@ -99,7 +106,10 @@ Name of the function: viewExpense()
 Inputs: user input
 Output: Displays all the expenses in the list
 *************************************************************************/
-function viewExpenses(data){
+function viewExpenses(){
+    const fileContent = fs.readFileSync('expenseList.json','utf8');
+    let existingExpenses = JSON.parse(fileContent);
+    console.log(existingExpenses);
 
 }
 
@@ -109,13 +119,33 @@ Inputs: user input
 Output: Deletes an expense from the json file
 *************************************************************************/
 function deleteExpense(data){
-
+    console.log(data);
+    const fileContent = fs.readFileSync('expenseList.json','utf8');
+    let existingExpenses = JSON.parse(fileContent);
+    for(let i=0; i<existingExpenses.length; i++){
+        
+        if(existingExpenses[i].id===Number(data)){
+            existingExpenses.splice(i,1);
+            fs.writeFileSync('expenseList.json',JSON.stringify(existingExpenses,null,2),'utf8');
+        }
+        
+    }
+    console.log("Deleted the expense with id "+data+"successfully!");
+    
+    
 }
 /************************************************************************
 Name of the function: expenseSummary()
 Inputs: user input
 Output: Summarizes the expenses
 *************************************************************************/
-function expenseSummary(data){
-
+function expenseSummary(){
+    const fileContent = fs.readFileSync('expenseList.json','utf8');
+    let existingExpenses = JSON.parse(fileContent);
+    let totalAmount = 0;
+    for(let i=0;i<existingExpenses.length;i++){
+        let eachAmount = Number(existingExpenses[i].amount);
+        totalAmount = totalAmount + eachAmount;
+    }
+    console.log("Total expenses so far: "+totalAmount);
 }
