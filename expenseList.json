@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "desc": "new expense",
+    "amount": "500",
+    "id": 60,
+    "createdAt": "18/6/2025, 7:25:17 pm",
+    "updatedAt": ""
+  }
+]
