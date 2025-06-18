@@ -26,6 +26,9 @@ if(!fileExists){
 if(args[0]==="add"){
     addExpense(args);
 }
+if(args[0]==="update"){
+    updateExpense(args);
+}
 
 /************************************************************************
 Name of the function: loadData()
@@ -68,9 +71,25 @@ Inputs: user input
 Output: Updates an expense into the json file based on the id given in the input
 *************************************************************************/
 function updateExpense(data){
-    if(data.length !== 2){
-        console.log("Enter the expense to add!");
+    let inpId = Number(data[1]);
+    let newDesc = data[2];
+    let newAmount = data[3];
+    
+    const fileContent = fs.readFileSync('expenseList.json','utf8');
+    let existingExpenses = JSON.parse(fileContent);
+    //console.log(data[1]);
+    //console.log(existingExpenses);
+    for(let i=0; i<existingExpenses.length; i++){
+        
+        if(existingExpenses[i].id===inpId){
+            existingExpenses[i].desc = newDesc;
+            existingExpenses[i].amount = newAmount;
+        }
+        
     }
+    
+    expenseList.push(...existingExpenses);
+    fs.writeFileSync('expenseList.json',JSON.stringify(expenseList,null,2),'utf8');
 
 
 }

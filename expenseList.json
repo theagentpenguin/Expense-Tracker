@@ -1,5 +1,12 @@
 [
   {
+    "desc": "updated description",
+    "amount": "300",
+    "id": 26,
+    "createdAt": "18/6/2025, 7:54:15 pm",
+    "updatedAt": ""
+  },
+  {
     "desc": "new expense",
     "amount": "500",
     "id": 60,
