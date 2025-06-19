@@ -17,7 +17,9 @@ const args = process.argv.slice(2);
 let expenseList = [];
 const fileExists = fs.existsSync('expenseList.json');
 //console.log(args);
+let month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 
+//console.log(month[args[1]-1]);
 if(!fileExists){
     fs.writeFileSync('expenseList.json',JSON.stringify(expenseList),'utf8');
 }
@@ -35,8 +37,12 @@ if(args[0]==="delete"){
     deleteExpense(args[1]);
 }
 
-if(args[0]==="summary"){
+if(args[0]==="summary" && args.length<=1){
     expenseSummary();
+}
+
+if(args[0]==="summary" && args.length>1){
+    monthlyExpenseSummary();
 }
 /************************************************************************
 Name of the function: loadData()
@@ -66,6 +72,7 @@ function addExpense(data){
         amount: data[2],
         id: randomId,
         createdAt: currentTime.toLocaleString(),
+        currentMonth: month[currentTime.getMonth()],
         updatedAt: ""
     }
     console.log(expenseObject);
@@ -145,7 +152,26 @@ function expenseSummary(){
     let totalAmount = 0;
     for(let i=0;i<existingExpenses.length;i++){
         let eachAmount = Number(existingExpenses[i].amount);
-        totalAmount = totalAmount + eachAmount;
+        totalAmount += eachAmount;
     }
     console.log("Total expenses so far: "+totalAmount);
+}
+/************************************************************************
+Name of the function: monthlyExpenseSummary()
+Inputs: user input
+Output: Summarizes the expenses for the given month
+*************************************************************************/
+function monthlyExpenseSummary(){
+    let reqMonth = month[args[1]-1];
+    const fileContent = fs.readFileSync('expenseList.json','utf8');
+    let existingExpenses = JSON.parse(fileContent);
+    let totalAmount = 0;
+    for(let i=0; i<existingExpenses.length; i++){
+        if(existingExpenses[i].currentMonth == reqMonth){
+            let eachAmount = Number(existingExpenses[i].amount);
+            totalAmount += eachAmount;
+        }
+    }
+    console.log("Total expenses for the month of "+reqMonth+": "+totalAmount);
+    
 }

@@ -1,23 +1,42 @@
 [
   {
-    "desc": "simple update",
-    "amount": "25",
-    "id": 93,
-    "createdAt": "18/6/2025, 8:47:34 pm",
-    "updatedAt": "18/6/2025, 8:54:42 pm"
-  },
-  {
-    "desc": "expense 2",
-    "amount": "450",
-    "id": 94,
-    "createdAt": "18/6/2025, 8:47:30 pm",
+    "desc": "another expense",
+    "amount": "6780",
+    "id": 41,
+    "createdAt": "19/6/2025, 10:31:18 pm",
+    "currentMonth": "June",
     "updatedAt": ""
   },
   {
-    "desc": "expense 1",
-    "amount": "300",
-    "id": 80,
-    "createdAt": "18/6/2025, 8:47:23 pm",
+    "desc": "another expense",
+    "amount": "765",
+    "id": 14,
+    "createdAt": "19/6/2025, 10:31:11 pm",
+    "currentMonth": "August",
+    "updatedAt": ""
+  },
+  {
+    "desc": "another expense",
+    "amount": "334",
+    "id": 24,
+    "createdAt": "19/6/2025, 10:31:08 pm",
+    "currentMonth": "June",
+    "updatedAt": ""
+  },
+  {
+    "desc": "another expense",
+    "amount": "3345",
+    "id": 27,
+    "createdAt": "19/6/2025, 10:31:05 pm",
+    "currentMonth": "August",
+    "updatedAt": ""
+  },
+  {
+    "desc": "another expense",
+    "amount": "3000",
+    "id": 30,
+    "createdAt": "19/6/2025, 10:30:59 pm",
+    "currentMonth": "June",
     "updatedAt": ""
   }
 ]
